@@ -16,7 +16,16 @@ module PortalProject
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.generators do |g|
+        g.stylesheets false
+        g.test_framework :rspec, fixture: false
+        g.template_engine false
+    end
 
+    console do 
+        require 'pry'
+        config.console = Pry
+    end
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
