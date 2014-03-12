@@ -11,11 +11,114 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312155951) do
+ActiveRecord::Schema.define(version: 20140312163757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "achievements", force: true do |t|
+    t.string   "achievement_name"
+    t.string   "achievement_category"
+    t.integer  "achievement_points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "category_of_projects", force: true do |t|
+    t.string   "type_of_project"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.string   "comment_body"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_tags", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "post_subject"
+    t.text     "post_body"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_roles", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_tags", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "project_title"
+    t.text     "project_body"
+    t.string   "project_skill_level"
+    t.integer  "estimated_weekly_hours"
+    t.integer  "number_of_developers_needed", default: 2
+    t.datetime "next_stand_up"
+    t.datetime "deadline"
+    t.string   "deadline_reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "role_name"
+    t.string   "account_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "language"
+    t.string   "taggable_type"
+    t.integer  "taggable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_achievements", force: true do |t|
+    t.integer  "user_bio_id"
+    t.integer  "achievement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_bios", force: true do |t|
+    t.string   "about_me"
+    t.hstore   "user_languages"
+    t.integer  "reputation"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_projects", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
