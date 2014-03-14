@@ -50,3 +50,4 @@ gem 'pry', group: [:development, :test]
 gem 'rspec-rails', group: [:development, :test]
 gem 'cucumber-rails', :require => false
 gem 'database_cleaner'
+gem 'factory_girl_rails', "~> 4.0"
