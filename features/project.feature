@@ -8,7 +8,7 @@ Feature: Creating Projects
 	Scenario: Create a project if user is signed in
 		Given I am signed in
 		And I see Create Project
-		And I click on create project
+		And I click Create Project
 		And I fill in the new project form with valid information
 		And I hit the create button
 		Then I expect the page to have "New project created"

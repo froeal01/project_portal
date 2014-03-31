@@ -1,0 +1,17 @@
+<div class = "uk-grid">
+	<div class = "uk-form">
+		<%=  form_for @project do |f| %>
+			<div class = "uk-form-row">
+				<%=  label_for :project_type, "Project Type" %>
+				<%=  f.select(:project_type, ['open source', 'challenge']) %>
+			</div>
+			<div class = "uk-form-row">
+				<%=  label_for :project_title, 'Project Title' %>
+				<%=  f.text_field :project_title%>
+			</div>
+			<div class= "uk-form-row"> 
+
+			</div>
+
+	</div>
+</div>
